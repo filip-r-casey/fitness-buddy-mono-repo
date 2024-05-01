@@ -1,4 +1,4 @@
-// File: /Users/filipcasey/School/SP2024/SOFTWAREDEV/PROJECT/fitness-buddy-mono-repo/frontend/app/layout.js
+// File: /Users/filipcasey/School/SP2024/SOFTWAREDEV/PROJECT/fitness-buddy-mono-repo-personal/frontend/app/layout.js
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
