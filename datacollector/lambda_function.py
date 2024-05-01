@@ -1,7 +1,7 @@
 import requests
 import psycopg2
 def lambda_handler(event, context):
-    # small change 2
+    # small change 23
     params = {
         "dbname": "postgres",
         "user": "postgres",
