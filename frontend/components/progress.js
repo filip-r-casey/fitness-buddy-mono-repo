@@ -17,7 +17,7 @@ function Progress({viewProgress, viewProgressHandler, user}) {
         getProgress();
     }, [user]);
     const getProgress = () => {
-        const baseURL = api_url + "api/view_progress/";
+        const baseURL = api_url + "progress";
         const params = {
             username: user
         }
@@ -39,7 +39,7 @@ function Progress({viewProgress, viewProgressHandler, user}) {
                 viewProgressHandler(false);
             }}>Back</Button>
             <Typography variant={"h2"} className={"mt-20"}>Your Progress</Typography>
-            <div class={"flex"}>
+            <div className={"flex"}>
                 <div className={"mt-20 ml-5 mr-5 max-w-.5"}>
                     <TableContainer component={Paper}>
                         <Table sx={{minWidth: 650}} aria-label="simple table">
@@ -54,16 +54,16 @@ function Progress({viewProgress, viewProgressHandler, user}) {
                             <TableBody>
                                 {rows.map((row) => (
                                     <TableRow
-                                        key={row.exercise}
+                                        key={row.workout_name + row.date}
                                         sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                                        id={row.exercise + row.date}
+                                        id={row.workout_name + row.date}
                                     >
                                         <TableCell align="left">
                                             {row.date}
                                         </TableCell>
-                                        <TableCell align="left">{row.exercise}</TableCell>
-                                        <TableCell align="left">{row.reps_completed}</TableCell>
-                                        <TableCell align="left">{row.sets_completed}</TableCell>
+                                        <TableCell align="left">{row.workout_name}</TableCell>
+                                        <TableCell align="left">{row.reps}</TableCell>
+                                        <TableCell align="left">{row.sets}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>

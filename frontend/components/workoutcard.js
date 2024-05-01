@@ -92,16 +92,16 @@ function WorkoutCard({workout}) {
         const exercise_date = new Date();
         const timestamp = exercise_date.getTime() / 1000;
         try {
-            const response = await fetch(api_url + 'api/add_progress/', {
+            const response = await fetch(api_url + 'add_progress', {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
                 },
                 body: JSON.stringify({
-                    exercise: workout.name,
+                    workout_name: workout.name,
                     date: timestamp,
-                    sets_completed: sets,
-                    reps_completed: reps,
+                    sets: sets,
+                    reps: reps,
                     user: user
                 }),
             });
