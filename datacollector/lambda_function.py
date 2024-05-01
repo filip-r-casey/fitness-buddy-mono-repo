@@ -1,13 +1,14 @@
-def collect():
-    import requests
-    import psycopg2
+import requests
+import psycopg2
+def lambda_handler(event, context):
     # small change 2
     params = {
         "dbname": "postgres",
         "user": "postgres",
         "password": "_XZUt-7U.QZCCV6c",
         "host": "datastore.cnwc620s2iep.us-east-1.rds.amazonaws.com",
-        "port": "5432"
+        "port": "5432",
+        "sslmode": "require"
     }
 
     conn = psycopg2.connect(**params)
