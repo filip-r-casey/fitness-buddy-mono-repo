@@ -7,13 +7,17 @@ import Button from "@mui/material/Button";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {IconButton, Tooltip} from "@mui/material";
 import SignIn from "@/components/signin";
+import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 
 // import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 
 function AutocompleteSearch({setResults, viewProgressHandler}) {
-    const api_key = process.env.NEXT_PUBLIC_API_NINJA_KEY;
-    const requestOptions = {
-        method: "GET", headers: {"Content-Type": "application/json", "X-Api-Key": api_key},
+    const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
+    let api_url = ""
+    if (environment === "DEV") {
+        api_url = process.env.NEXT_PUBLIC_DEV_API;
+    } else {
+        api_url = process.env.NEXT_PUBLIC_PROD_API;
     }
     const [submitted, setSubmitted] = useState(false);
     const [user, setUser] = useState("");
@@ -29,7 +33,7 @@ function AutocompleteSearch({setResults, viewProgressHandler}) {
 
     const handleSubmit = (event, value) => {
         event.preventDefault();
-        fetch(`https://api.api-ninjas.com/v1/exercises?name=${value}`, requestOptions)
+        fetch(`${api_url}workouts?name=${value}`)
             .then(response => response.json())
             .then(json => {
                 setResults(json)
