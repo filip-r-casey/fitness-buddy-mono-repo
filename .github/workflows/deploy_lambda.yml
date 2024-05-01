@@ -22,7 +22,6 @@ jobs:
     - name: Install dependencies
       run: |
         cd datacollector
-        pip install -r requirements.txt
         pip install awscli
 
     - name: Configure AWS credentials
