@@ -8,7 +8,6 @@ app_routes = Blueprint('app_routes', __name__)
 def welcome():
     return jsonify({'message': 'Welcome to Fitness Buddy Backend!'})
 
-
 @app_routes.route('/workouts', methods=['GET'])
 def workouts():
     import psycopg2
