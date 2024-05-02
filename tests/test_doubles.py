@@ -51,13 +51,11 @@ def test_sign_up(mock_connect, client):
     data = response.get_json()
     assert data == {'message': 'Logged in', 'username': 'test_user'}
 
-@patch('backend.app.views.psycopg2.connect')  # Replace 'your_module' with the correct module name
+@patch('backend.app.views.psycopg2.connect')  
 def test_add_progress(mock_connect, client):
-    # Mock psycopg2 connection and cursor
+  
     mock_cursor = MagicMock()
     mock_connect.return_value.cursor.return_value.__enter__.return_value = mock_cursor
-
-    # Mock data for the request
     json_data = {
         'user': 'test_user',
         'workout_name': 'test_workout',
@@ -67,10 +65,7 @@ def test_add_progress(mock_connect, client):
         'weight': 50
     }
 
-    # Mock the request object
     response = client.post('/add_progress', json=json_data)
-
-    # Check if the response is as expected
     assert response.status_code == 201
     data = response.get_json()
     assert data == {'message': 'record created'}
