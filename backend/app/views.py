@@ -1,6 +1,9 @@
 from flask import Blueprint, request, jsonify
 import json
 from datetime import datetime
+# import so that test_doubles can mock psycopg2 since it's dynamically imported
+import psycopg2
+
 
 app_routes = Blueprint('app_routes', __name__)
 
@@ -10,6 +13,7 @@ def welcome():
 
 @app_routes.route('/workouts', methods=['GET'])
 def workouts():
+    # does this need to be dynamically imported? 
     import psycopg2
     from psycopg2.extras import RealDictCursor
     params = {

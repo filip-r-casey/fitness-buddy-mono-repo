@@ -10,7 +10,7 @@ from unittest.mock import patch, MagicMock
 from backend.app import create_app  
 
 
-@pytest.fixture
+@pytest.fixture 
 def client():
     app = create_app()
     app.config['TESTING'] = True
@@ -18,14 +18,15 @@ def client():
     with app.test_client() as client:
         yield client
 
-@patch('backend.apps.workouts.psycopg2.connect')
+@patch('backend.app.views.psycopg2.connect')
 def test_workouts_success(mock_connect, client):
     # Mock psycopg2.connect
-    print('entered')
+    
     mock_cursor = MagicMock()
-    mock_cursor.fetchall.return_value = [{'id': 1, 'name': 'Workout 1'}, {'id': 2, 'name': 'Workout 2'}]
+    return_value = [{'id': 1, 'name': 'Workout 1'}, {'id': 2, 'name': 'Workout 2'}]
+    mock_cursor.fetchall.return_value = return_value
     mock_connect.return_value.cursor.return_value.__enter__.return_value = mock_cursor
-
+    
     # Make request to /workouts endpoint
     response = client.get('/workouts?name=test')
 
@@ -34,4 +35,5 @@ def test_workouts_success(mock_connect, client):
 
     # Assert response data
     data = response.json
-    assert data == [{'id': 1, 'name': 'Workout 1'}, {'id': 2, 'name': 'Workout 2'}]
+    print(data)
+    assert data == return_value
