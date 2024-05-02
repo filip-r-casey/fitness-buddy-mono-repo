@@ -24,7 +24,7 @@ function SignIn({isSignInOpen, setIsSignInOpen, setUserHandler}) {
         const password = formData.get("password");
         console.log("Signing in with", email, password);
         try {
-            const response = await fetch(api_url + 'sign_in/', {
+            const response = await fetch(api_url + 'sign_in', {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
@@ -59,7 +59,7 @@ function SignIn({isSignInOpen, setIsSignInOpen, setUserHandler}) {
             return;
         }
         try {
-            const response = await fetch(api_url + 'sign_up/', {
+            const response = await fetch(api_url + 'sign_up', {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
