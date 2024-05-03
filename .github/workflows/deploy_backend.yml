@@ -38,7 +38,7 @@ jobs:
 
     - name: Initialize Elastic Beanstalk CLI
       run: |
-        eb init FBBACKEND --platform "Python 3.8" --region ${{ secrets.AWS_REGION }} -n
+        eb init FBBACKEND --platform "Python 3.8" --region ${{ secrets.AWS_REGION }} --platform "Python 3.8" --region ${{ secrets.AWS_REGION }}
 
     - name: Use existing environment
       run: |
