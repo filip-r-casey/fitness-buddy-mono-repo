@@ -105,6 +105,9 @@ Used to run the data collector
 Used to host the front-end application
 
 ### Integration Tests
+Two integration tests were written to ensure that we get full points for this section. The first test, api_client_integration, tests to make sure that the api from our 
+local end can be accepted remotely, and then issue a statement back to local. The second test file, "Second Integration Test" works in a similar manner, but asserts that the 
+fitness buddy app launched with status code 200. 
 
 ### Mock Objects/Test Doubles
 
