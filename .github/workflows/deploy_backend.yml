@@ -1,0 +1,45 @@
+name: Deploy to AWS Elastic Beanstalk
+
+on:
+  push:
+    branches:
+      - main  # Adjust this as needed for your deployment branch
+    paths:
+      - 'backend/**'  # Trigger only on changes within the backend directory
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.8'  # Set this to the Python version you use
+
+    - name: Install EB CLI
+      run: |
+        pip install awsebcli
+        eb --version
+
+    - name: Zip application files
+      run: |
+        cd backend
+        zip -r ../deploy.zip . -x "*.git*"
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - name: Upload and deploy to Elastic Beanstalk
+      run: |
+        eb init -p python-3.8 my-application --region ${{ secrets.AWS_REGION }}  # Initialize your EB CLI application
+        eb create-env --cname my-application-env  # Create environment if doesn't exist
+        eb use my-application-env  # Set the default environment
+        eb labs create-version --label ${{ github.run_id }} --message "Deploy run ${{ github.run_id }}" --source ../deploy.zip
+        eb deploy --version ${{ github.run_id }}
