@@ -19,10 +19,11 @@ jobs:
       with:
         python-version: '3.8'  # Set this to the Python version you use
 
-    - name: Install EB CLI
+    - name: Install EB CLI and AWS CLI
       run: |
-        pip install awsebcli
+        pip install awsebcli awscli
         eb --version
+        aws --version
 
     - name: Zip application files
       run: |
@@ -38,13 +39,16 @@ jobs:
 
     - name: Initialize Elastic Beanstalk CLI
       run: |
-        eb init FBBACKEND --platform "Python 3.8" --region ${{ secrets.AWS_REGION }} --platform "Python 3.8" --region ${{ secrets.AWS_REGION }}
+        eb init FBBACKEND --platform "Python 3.8" --region ${{ secrets.AWS_REGION }}
 
-    - name: Use existing environment
+    - name: Set the environment
       run: |
         eb use FBBACKEND-env
 
+    - name: Create new application version
+      run: |
+        aws elasticbeanstalk create-application-version --application-name your-application-name --version-label ${{ github.run_id }} --source-bundle S3Bucket=your-s3-bucket,S3Key=deploy.zip --auto-create-application
+
     - name: Deploy to Elastic Beanstalk
       run: |
-        eb labs create-version --label ${{ github.run_id }} --message "Deploy run ${{ github.run_id }}" --source ../deploy.zip
         eb deploy --version ${{ github.run_id }}
