@@ -34,12 +34,10 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
+        aws-region: ${{ secrets.AWS_REGION }}
 
-    - name: Upload and deploy to Elastic Beanstalk
+    - name: Deploy to Elastic Beanstalk
       run: |
-        eb init -p python-3.8 my-application --region ${{ secrets.AWS_REGION }}  # Initialize your EB CLI application
-        eb create-env --cname my-application-env  # Create environment if doesn't exist
-        eb use my-application-env  # Set the default environment
+        eb use FBBACKEND-env  # Set the environment to the existing one
         eb labs create-version --label ${{ github.run_id }} --message "Deploy run ${{ github.run_id }}" --source ../deploy.zip
         eb deploy --version ${{ github.run_id }}

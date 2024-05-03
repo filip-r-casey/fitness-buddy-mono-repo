@@ -1,6 +1,6 @@
 from app import create_app
 
-# small change 1
+# small change 2
 
 application = create_app()
 
