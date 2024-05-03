@@ -133,3 +133,8 @@ where we can promote applications from staging to prod within the console itself
 ### Acceptance Tests
 
 ### Messaging
+1. **Event Messaging API**: Introduced new backend endpoints for posting and retrieving messages tied to specific events, enhancing real-time communication capabilities.
+
+2. **React Messaging Components**: Developed `MessageDisplay` and `MessageInput` components in the frontend to display messages and enable message posting, improving user interaction within events.
+
+3. **Integrated Messaging Interface**: Implemented a new `EventPage` that combines display and input components for a seamless event communication experience, fostering better user engagement and collaboration.
