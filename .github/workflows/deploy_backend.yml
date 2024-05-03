@@ -51,7 +51,7 @@ jobs:
 
     - name: Create new application version
       run: |
-        aws elasticbeanstalk create-application-version --application-name your-application-name --version-label ${{ github.run_id }} --source-bundle S3Bucket=your-s3-bucket,S3Key=${{ github.run_id }}-deploy.zip --auto-create-application
+        aws elasticbeanstalk create-application-version --application-name FBBACKEND --version-label ${{ github.run_id }} --source-bundle S3Bucket=fbbackend-code,S3Key=${{ github.run_id }}-deploy.zip --auto-create-application
 
     - name: Deploy to Elastic Beanstalk
       run: |
