@@ -5,7 +5,7 @@ on:
     branches:
       - main  # Adjust this as needed for your deployment branch
     paths:
-      - 'dataanlyzer/**'  # Trigger only on changes within the dataanalyzer directory
+      - 'dataanalyzer/**'  # Trigger only on changes within the dataanalyzer directory
 
 jobs:
   deploy:
