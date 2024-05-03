@@ -20,7 +20,7 @@ jobs:
         python-version: '3.8'  # Set this to the Python version you use
     - name: Test
       run: |
-        pip install -r tests/requirements.txt
+        pip install -r test_requirements.txt
         pytest
 
     - name: Install EB CLI and AWS CLI

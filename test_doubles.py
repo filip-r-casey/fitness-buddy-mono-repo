@@ -1,8 +1,8 @@
-import os
-import sys
-script_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir_of_module = os.path.abspath(os.path.join(script_dir, '..'))
-sys.path.append(parent_dir_of_module)
+# import os
+# import sys
+# script_dir = os.path.dirname(os.path.abspath(__file__))
+# parent_dir_of_module = os.path.abspath(os.path.join(script_dir, '..'))
+# sys.path.append(parent_dir_of_module)
 
 import pytest
 from unittest.mock import patch, MagicMock
