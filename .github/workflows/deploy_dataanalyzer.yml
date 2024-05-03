@@ -1,11 +1,11 @@
-name: Deploy Backend to AWS Elastic Beanstalk
+name: Deploy Data Analyzer to AWS Elastic Beanstalk
 
 on:
   push:
     branches:
       - main  # Adjust this as needed for your deployment branch
     paths:
-      - 'backend/**'  # Trigger only on changes within the backend directory
+      - 'dataanlyzer/**'  # Trigger only on changes within the dataanalyzer directory
 
 jobs:
   deploy:
@@ -27,7 +27,7 @@ jobs:
 
     - name: Zip application files
       run: |
-        cd backend
+        cd dataanalyzer
         zip -r ../deploy.zip . -x "*.git*"
 
     - name: Configure AWS credentials
@@ -39,11 +39,11 @@ jobs:
 
     - name: Initialize Elastic Beanstalk CLI
       run: |
-        eb init FBBACKEND --platform "Python 3.8" --region ${{ secrets.AWS_REGION }}
+        eb init FBDataAnalyzer --platform "Python 3.8" --region ${{ secrets.AWS_REGION }}
 
     - name: Set the environment
       run: |
-        eb use FBBACKEND-env
+        eb use FBDataAnalyzer-env
 
     - name: Upload zip to S3
       run: |
@@ -51,7 +51,7 @@ jobs:
 
     - name: Create new application version
       run: |
-        aws elasticbeanstalk create-application-version --application-name FBBACKEND --version-label ${{ github.run_id }} --source-bundle S3Bucket=fbbackend-code,S3Key=${{ github.run_id }}-deploy.zip --auto-create-application
+        aws elasticbeanstalk create-application-version --application-name FBDataAnalyzer --version-label ${{ github.run_id }} --source-bundle S3Bucket=fbbackend-code,S3Key=${{ github.run_id }}-deploy.zip --auto-create-application
 
     - name: Deploy to Elastic Beanstalk
       run: |
