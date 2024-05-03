@@ -47,7 +47,7 @@ jobs:
 
     - name: Upload zip to S3
       run: |
-        aws s3 cp deploy.zip s3://your-s3-bucket/${{ github.run_id }}-deploy.zip
+        aws s3 cp deploy.zip s3://fbbackend-code/${{ github.run_id }}-deploy.zip
 
     - name: Create new application version
       run: |
