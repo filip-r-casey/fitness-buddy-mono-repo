@@ -36,8 +36,15 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
 
+    - name: Initialize Elastic Beanstalk CLI
+      run: |
+        eb init FBBACKEND --platform "Python 3.8" --region ${{ secrets.AWS_REGION }} -n
+
+    - name: Use existing environment
+      run: |
+        eb use FBBACKEND-env
+
     - name: Deploy to Elastic Beanstalk
       run: |
-        eb use FBBACKEND-env  # Set the environment to the existing one
         eb labs create-version --label ${{ github.run_id }} --message "Deploy run ${{ github.run_id }}" --source ../deploy.zip
         eb deploy --version ${{ github.run_id }}
