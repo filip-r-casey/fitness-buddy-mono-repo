@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 import json
 from datetime import datetime
-# import so that test_doubles can mock psycopg2 since it's dynamically imported
+# import here so testing works
 import psycopg2
 
 
