@@ -11,8 +11,8 @@
 | Data persistence any data store |  |  | ✅ |
 | Rest collaboration internal or API endpoint |  |  | ✅ |
 | Product environment |  |  | ✅ |
-| Integration tests |  | ✅ |  |
-| Using mock objects or any test doubles |  | ✅ | https://github.com/filip-r-casey/fitness-buddy-mono-repo/blob/main/tests/test_doubles.py#23 |
+| Integration tests |  | ✅ |  | https://github.com/filip-r-casey/fitness-buddy-mono-repo/blob/main/tests/Second%20Integration%20Test.py#8 |
+| Using mock objects or any test doubles |  | ✅ | | https://github.com/filip-r-casey/fitness-buddy-mono-repo/blob/main/tests/test_doubles.py#23 |
 | Continuous integration |  | ✅ |  |
 | Production monitoring instrumenting |  | ✅ |  |
 | Continuous delivery | ✅ |  |  |
