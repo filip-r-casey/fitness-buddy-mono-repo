@@ -17,7 +17,7 @@
 | Production monitoring instrumenting |  | ✅ |  |
 | Continuous delivery | ✅ |  |  |
 | Acceptance tests |  |  |  |
-| Event collaboration messaging |  |  |  |
+| Event collaboration messaging | ✅ |  |  |
 
 ## Architecture
 
