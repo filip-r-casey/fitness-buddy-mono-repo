@@ -2,17 +2,17 @@
 
 ## Rubric
 
-| Task | A level work (3) | B level work (4) | C level work (7) |
-|------|------------------|------------------|------------------|
+| Task | A level work (3) | B level work (4) | C level work (7) | Implementation Location |
+|------|------------------|------------------|------------------|-------------------------|
 | Web application basic form, reporting |  |  | ✅ |
 | Data collection |  |  | ✅ |
 | Data analyzer |  |  | ✅ |
-| Unit tests |  |  | ✅ |
+| Unit tests |  |  | ✅ |https://github.com/filip-r-casey/fitness-buddy-mono-repo/blob/main/tests/test_unit.py#L20|
 | Data persistence any data store |  |  | ✅ |
 | Rest collaboration internal or API endpoint |  |  | ✅ |
 | Product environment |  |  | ✅ |
 | Integration tests |  | ✅ |  |
-| Using mock objects or any test doubles |  | ✅ |  |
+| Using mock objects or any test doubles |  | ✅ | https://github.com/filip-r-casey/fitness-buddy-mono-repo/blob/main/tests/test_doubles.py#23 |
 | Continuous integration |  | ✅ |  |
 | Production monitoring instrumenting |  | ✅ |  |
 | Continuous delivery | ✅ |  |  |
