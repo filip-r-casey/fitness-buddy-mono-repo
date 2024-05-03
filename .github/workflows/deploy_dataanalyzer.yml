@@ -1,0 +1,58 @@
+name: Deploy Data Analyzer to AWS Elastic Beanstalk
+
+on:
+  push:
+    branches:
+      - main  # Adjust this as needed for your deployment branch
+    paths:
+      - 'dataanalyzer/**'  # Trigger only on changes within the dataanalyzer directory
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.8'  # Set this to the Python version you use
+
+    - name: Install EB CLI and AWS CLI
+      run: |
+        pip install awsebcli awscli
+        eb --version
+        aws --version
+
+    - name: Zip application files
+      run: |
+        cd dataanalyzer
+        zip -r ../deploy.zip . -x "*.git*"
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+
+    - name: Initialize Elastic Beanstalk CLI
+      run: |
+        eb init FBDataAnalyzer --platform "Python 3.8" --region ${{ secrets.AWS_REGION }}
+
+    - name: Set the environment
+      run: |
+        eb use FBDataAnalyzer-env
+
+    - name: Upload zip to S3
+      run: |
+        aws s3 cp deploy.zip s3://fbbackend-code/${{ github.run_id }}-deploy.zip
+
+    - name: Create new application version
+      run: |
+        aws elasticbeanstalk create-application-version --application-name FBDataAnalyzer --version-label ${{ github.run_id }} --source-bundle S3Bucket=fbbackend-code,S3Key=${{ github.run_id }}-deploy.zip --auto-create-application
+
+    - name: Deploy to Elastic Beanstalk
+      run: |
+        eb deploy --version ${{ github.run_id }}
