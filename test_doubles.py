@@ -27,7 +27,6 @@ def test_workouts_success(mock_connect, client):
     response = client.get('/workouts?name=test')
     assert response.status_code == 200
     data = response.json
-    print(data)
     assert data == return_value
 
 # Test case for the sign_up endpoint
