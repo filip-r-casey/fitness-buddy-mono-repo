@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 # import here so testing works
 import psycopg2
-
+# small change
 
 app_routes = Blueprint('app_routes', __name__)
 
