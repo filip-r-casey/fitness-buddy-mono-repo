@@ -6,7 +6,7 @@
 
 import pytest
 from unittest.mock import patch, MagicMock
-from backend.app import create_app  
+from .backend.app import create_app  
 from datetime import datetime
 
 
