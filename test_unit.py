@@ -1,4 +1,5 @@
 import pytest
+# backend should work now
 from backend.app import create_app as backend_create_app
 from dataanalyzer.app import create_app as analyzer_create_app 
 import json

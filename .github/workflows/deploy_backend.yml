@@ -18,7 +18,7 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: '3.8'  # Set this to the Python version you use
-    - name: Test
+    - name: Test App
       run: |
         pip install -r test_requirements.txt
         pytest
