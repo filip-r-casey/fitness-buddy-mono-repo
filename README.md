@@ -4,18 +4,18 @@
 
 | Task | A level work (3) | B level work (4) | C level work (7) | Implementation Location |
 |------|------------------|------------------|------------------|-------------------------|
-| Web application basic form, reporting |  |  | ✅ |
-| Data collection |  |  | ✅ |
-| Data analyzer |  |  | ✅ |
-| Unit tests |  |  | ✅ |https://github.com/filip-r-casey/fitness-buddy-mono-repo/blob/main/tests/test_unit.py#L20|
-| Data persistence any data store |  |  | ✅ |
-| Rest collaboration internal or API endpoint |  |  | ✅ |
-| Product environment |  |  | ✅ |
-| Integration tests |  | ✅ |  | https://github.com/filip-r-casey/fitness-buddy-mono-repo/blob/main/tests/Second%20Integration%20Test.py#8 |
+| Web application basic form, reporting |  |  | ✅ |[Website](https://main.d3o1p76xpmptqf.amplifyapp.com/)|
+| Data collection |  |  | ✅ |[In App](https://main.d3o1p76xpmptqf.amplifyapp.com/) [Folder](https://github.com/filip-r-casey/fitness-buddy-mono-repo/tree/main/datacollector)|
+| Data analyzer |  |  | ✅ |[In App](https://main.d3o1p76xpmptqf.amplifyapp.com/) [Folder](https://github.com/filip-r-casey/fitness-buddy-mono-repo/tree/main/dataanalyzer)|
+| Unit tests |  |  | ✅ |[File](https://github.com/filip-r-casey/fitness-buddy-mono-repo/blob/main/tests/test_unit.py#L20)|
+| Data persistence any data store |  |  | ✅ |[Website](https://main.d3o1p76xpmptqf.amplifyapp.com/)|
+| Rest collaboration internal or API endpoint |  |  | ✅ |[Website](https://main.d3o1p76xpmptqf.amplifyapp.com/)|
+| Product environment |  |  | ✅ |[Website](https://main.d3o1p76xpmptqf.amplifyapp.com/)|
+| Integration tests |  | ✅ |  | [File](https://github.com/filip-r-casey/fitness-buddy-mono-repo/blob/main/tests/Second%20Integration%20Test.py#8) |
 | Using mock objects or any test doubles |  | ✅ | | https://github.com/filip-r-casey/fitness-buddy-mono-repo/blob/main/tests/test_doubles.py#23 |
-| Continuous integration |  | ✅ |  |
+| Continuous integration |  | ✅ |  |[Website](https://main.d3o1p76xpmptqf.amplifyapp.com/)|
 | Production monitoring instrumenting |  | ✅ |  |
-| Continuous delivery | ✅ |  |  |
+| Continuous delivery | ✅ |  |  |[Deployment](https://main.d3o1p76xpmptqf.amplifyapp.com/)|
 | Acceptance tests |  |  |  |
 | Event collaboration messaging | ✅ |  |  |
 
